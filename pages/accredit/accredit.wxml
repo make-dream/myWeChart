@@ -1,0 +1,6 @@
+<!--授权页面-->
+<view class="image-div">
+<image src='../img/logo.png' class='logo' ></image>
+<button class='btn_yzm' type="primary" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}"
+        disabled="{{disabled}}" bindtap="primary"> 授权登录 </button>
+</view>

@@ -1,0 +1,112 @@
+<!--pages/find/find.wxml-->
+<view class="form">
+    <!--<view class="group clearfix">
+        <text class="name">交易起止日期：</text>
+        <view class="key clearfix">
+            <picker mode="date" value="{{data}}" start="{{start}}" end="{{end}}" bindchange="bindDateChange1">
+                <view class="picker">
+                    <text class="time">{{datestart}}</text><text class="to">一</text>
+                </view>
+            </picker>
+            <picker mode="date" value="{{data}}" start="{{datastart1}}" end="{{end}}" bindchange="bindDateChange2">
+                <view class="picker">
+                    <text class="time">{{dateend}}</text>
+                </view>
+            </picker>
+        </view>
+    </view>
+    <view class="group">
+        <text class="name">支付方式：</text>
+        <view class="key">
+            <view class="type" wx:if="{{_num == '1'}}">
+                <image class="label active" src="../img/icon_wechat_p.png" data-num="1" bindtap="clickNum"></image>
+                <image class="label" src="../img/icon_alipay.png" data-num="2" bindtap="clickNum"></image>
+                <image class="label" src="../img/icon_andpay.png" data-num="3" bindtap="clickNum"></image>
+            </view>
+            <view class="type" wx:if="{{_num == '2'}}" >
+                <image class="label" src="../img/icon_wechat.png" data-num="1" bindtap="clickNum"></image>
+                <image class="label active" src="../img/icon_alipay_p.png" data-num="2" bindtap="clickNum"></image>
+                <image class="label" src="../img/icon_andpay.png" data-num="3" bindtap="clickNum"></image>
+            </view>
+            <view class="type" wx:if="{{_num == '3'}}" >
+                <image class="label" src="../img/icon_wechat.png" data-num="1" bindtap="clickNum"></image>
+                <image class="label" src="../img/icon_alipay.png" data-num="2" bindtap="clickNum"></image>
+                <image class="label active" src="../img/icon_andpay_p.png" data-num="3" bindtap="clickNum"></image>
+            </view>
+        </view>
+    </view>-->
+    <view class="group">
+        <text class="name">用户手机号：</text>
+        <view class="key">
+            <input class="input" placeholder="请输入手机号码" bindinput="getPhone" type="number"/>
+        </view>
+    </view>
+    <view class="group">
+        <text class="name">订单号:</text>
+        <view class="key">
+            <input class="input" placeholder="商户订单号" bindinput="getOrder"/>
+        </view>
+    </view>
+    <!--<view class="group">
+        <text class="name">交易类型：</text>
+        <view class="key mt-10">
+            <button class="{{_way == 1?'btn-blue':'btn-default'}} mr-20" data-way="1" bindtap="clickWay">支付</button>
+            <button class="{{_way == 2?'btn-blue':'btn-default'}}" data-way="2"bindtap="clickWay">退款</button>
+        </view>
+    </view>-->
+    <view class="handle">
+        <button class="search {{cancel==false?'active':''}}" bindtap='search'>{{status}}</button>
+    </view>
+</view>
+ <view class="result" hidden="{{flag}}">
+    <view id="id" wx:for="{{list}}" wx:if="{{list.length>0}}" class="list clearfix" bindtap='move' data-id="{{i.refundNo}}" id="{{i.payOrderId}}" data-status="{{i.orderStatus}}" wx:for-item="i">
+        <view class="type" wx:if="{{i.payType == '和包'}}" >
+            <image src="../img/icon1.png"></image>
+        </view>
+        <view class="type" wx:elif="{{i.payType == '支付宝'}}" >
+            <image src="../img/icon3.png"></image>
+        </view>
+        <view class="type" wx:else="{{i.payType}}" >
+            <image src="../img/icon2.png"></image>
+        </view>
+        <view class="number">
+            <text class="phone">{{i.mobile}}</text>
+            <text>{{i.time}}</text>
+        </view>
+        <view class="price" wx:if="{{i.orderstatus == '支付成功'}}">
+            <text class="status">+{{i.amount}}</text>
+            <text>{{i.orderStatus}}</text>
+        </view>
+        <view class="price" wx:else="{{i.orderstatus == '支付成功'}}">
+            <text class="status">{{i.amount}}</text>
+            <text>{{i.orderStatus}}</text>
+        </view>
+    </view>
+</view> 
+<view class="nodata" wx:if="{{len == 0}}">
+  <text>{{message}}</text>
+</view>
+<modal title="" hidden="{{hidden}}" confirm-text="确定" no-cancel bindconfirm="confirm" >
+  <text>请输入手机号或订单号</text>
+</modal>
+ <!-- <view class="result">
+    <view wx:for="{{list}}" wx:for-item="i" bindtap='move' id="{{i.id}}" wx:key="i" class="list clearfix">
+        <view class="type" wx:if="{{i.paytype == '和包'}}" >
+            <image src="../img/icon1.png"></image>
+        </view>
+        <view class="type" wx:elif="{{i.paytype == '支付宝'}}" >
+            <image src="../img/icon3.png"></image>
+        </view>
+        <view class="type" wx:else="{{i.paytype}}" >
+            <image src="../img/icon2.png"></image>
+        </view>
+        <view class="number">
+            <text class="phone">{{i.accountcode}}</text>
+            <text>{{i.paycreatetime}}</text>
+        </view>
+        <view class="price">
+            <text class="status">{{i.payprice}}</text>
+            <text>{{i.orderstatus}}</text>
+        </view>
+    </view>
+</view>  -->

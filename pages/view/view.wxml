@@ -1,0 +1,56 @@
+<!--pages/view/view.wxml-->
+<view>
+  <view class="user team">
+    <view class="price">{{list.amount}}</view>
+    <view class="status" wx:if="{{list.orderStatus != '支付成功(有退款)'}}">支付成功</view>
+    <view class="status" wx:else="{{list.orderStatus != '支付成功(有退款)'}}">支付成功(有退款)</view>
+    <view class="group clearfix">
+        <text class="name">用户手机号</text>
+        <text class="value" selectable="true" >{{list.mobile}}</text>
+    </view>
+      <view class="group clearfix boss">
+          <text class="name">商户订单号</text>
+          <text class="value" selectable="true" >{{list.tradeNo}}</text>
+      </view>
+      <!--<view class="group  clearfix">
+          <text class="name">BOSS订单号</text>
+          <text class="value">{{list.bossno}}</text>
+      </view>-->
+      <view class="time">
+          <view class="group clearfix">
+              <text class="name">支付时间</text>
+              <text class="value">{{list.payTime}}</text>
+          </view>
+          <view class="group clearfix">
+              <text class="name">支付方式</text>
+              <text class="value">{{list.payType}}</text>
+          </view>
+          <view class="group clearfix boss">
+              <text class="name">商品详情</text>
+              <text class="value">{{list.orderInfo}}</text>
+          </view>
+      </view>
+  </view>
+  <view class="team content" wx:if="{{list.refundVos.length>0}}" wx:for="{{list.refundVos}}" wx:for-item="i" wx:for-index="idx">
+       <view class="group clearfix">
+         <text class="name">退款单号</text>
+         <text class="value">{{i.refundNo}}</text>
+       </view>
+       <view class="group clearfix">
+          <text class="name">退款金额</text>
+          <text class="value">{{i.refundAmount}} </text>
+       </view>
+      <view class="group clearfix">
+          <text class="name">发起退款时间</text>
+          <text class="value">{{i.createTime}}</text>
+      </view>
+      <view class="group clearfix boss">
+          <text class="name">退款完成时间</text>
+          <text class="value">{{i.refundTime}}</text>
+      </view>
+      <!--<view class="group clearfix ">
+          <text class="name">退款原因</text>
+          <text class="value">{{list.refundreason}}</text>
+      </view>-->
+  </view>
+</view>

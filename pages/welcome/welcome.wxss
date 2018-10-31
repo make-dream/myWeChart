@@ -1,0 +1,6 @@
+/* pages/welcome/welcome.wxss */
+.tip-container{
+  margin-top: 200rpx;
+  font-size: 12px;
+  color: #ACACAC;
+}

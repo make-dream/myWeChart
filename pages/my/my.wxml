@@ -1,0 +1,57 @@
+<!--my.wxml-->
+<view class="section">
+  <view class="user clearfix">
+    <image src='{{userImg}}'></image>
+    <text wx:if="{{realName != null}}">{{realName}}</text>
+  </view>
+  <view class="work">
+    <view class="group">
+      <image src="../img/icon6.png"></image>
+      <text class="key">归属</text>
+      <view class="box">
+        <view class="{{scroll? 'active': ''}}" style="left:{{num}}rpx">{{hallName}}</view>
+      </view>
+      
+    </view>
+    <view class="group">
+      <image src="../img/icon7.png"></image>
+      <text class="key">手机号</text>
+      <text class="name">{{phone}}</text>
+    </view>
+    <view class="group">
+      <image src="../img/icon8.png"></image>
+      <text class="key">工号</text>
+      <text class="name">{{jobNum}}</text>
+    </view>
+    <view class="group" wx:if="{{integral != null}}">
+      <image src="../img/icon9.png"></image>
+      <text class="key">积分</text>
+      <text class="name">{{integral}}</text>
+    </view>
+    </view>
+    <!--<view class='logout' bindtap='logout'>退出登录</view>-->
+</view>
+<view class="footer">
+    <view bindtap='tolist'>
+        <image src="../img/icon4-p.png"></image>
+        <text>查询账单</text>
+    </view>
+    <view bindtap='toChart' wx:if="{{admin == true}}">
+        <image src="../img/icon10.png"></image>
+        <text>运营分析</text>
+    </view>
+    <view>
+        <image src="../img/icon5.png"></image>
+        <text class="active">我的</text>
+    </view>
+</view>
+<view class="modal-mask" bindtap="hidemodal" catchtouchmove="preventTouchMove" wx:if="{{flag}}"></view>
+  <view class="modal-dialog" wx:if="{{flag}}">
+    <view class="modal-content">
+        <text>即将退出本次登录，是否确认？</text>
+    </view>
+    <view class="modal-footer">
+        <view class="btn-cancel" bindtap="cancel" data-status="cancel">取消</view>
+        <view class="btn-confirm" bindtap="confirm" data-status="confirm">确定</view>
+    </view>
+  </view>

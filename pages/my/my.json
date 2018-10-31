@@ -1,0 +1,20 @@
+{
+  "tabBar": {
+    "backgroundColor": "#000000",
+    "color": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "查询订单",
+        "iconPath": "pages/img/index.png",
+        "selectedIconPath": "pages/img/indexs.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "pages/img/index.png",
+        "selectedIconPath": "pages/img/indexs.png"
+      }
+    ]
+  }
+}

@@ -1,0 +1,116 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+}
+.canvas {
+  width: 100%;
+  height: 250px;
+}
+.clearfix {
+  _zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+.clearfix:after {
+  clear: both;
+}
+.footer {
+  transition: all 2s;
+  position: fixed;
+  bottom: 0;
+  z-index: 5;
+  width: 100%;
+  height: 65rpx;
+  padding: 15rpx 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-top: 1rpx solid #dedede;
+}
+.footer view {
+  flex: 1;
+  text-align: center;
+  z-index: 6;
+  position: relative;
+}
+.footer view image {
+  width: 50rpx;
+  height: 50rpx;
+  display: inline-block;
+  vertical-align: middle;
+}
+.footer view text {
+  font-size: 20rpx;
+  color: #666666;
+  display: block;
+}
+.footer view text.active {
+  color: #0898ff;
+}
+.footer.active {
+  bottom: -92rpx;
+  transition: all 2s;
+}
+.modal-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 9000;
+  color: #fff;
+}
+.modal-dialog {
+  height: 333.3rpx !important;
+  width: 584rpx !important;
+  overflow: hidden;
+  position: fixed;
+  top: 50%;
+  left: 0;
+  z-index: 9999;
+  background: #f9f9f9;
+  margin: -180rpx 83rpx;
+}
+.modal-content text {
+  display: block;
+  height: 240rpx;
+  line-height: 240rpx;
+  text-align: center;
+  color: #666;
+  font-size: 35rpx;
+  font-weight: normal;
+}
+.modal-footer {
+  display: flex;
+  flex-direction: row;
+  border-top: 1px solid #dedede;
+  font-size: 34rpx;
+  line-height: 91rpx;
+}
+.btn-confirm,
+.btn-cancel {
+  width: 50%;
+  color: #0898ff;
+  text-align: center;
+  box-sizing: border-box;
+  border-right: 1px solid #dedede;
+}
+.btn-confirm.login,
+.btn-cancel.login {
+  width: 100%;
+  border: none;
+}

@@ -1,0 +1,79 @@
+<view class="section clearfix">
+  <button class="pull-left prev" bindtap='prev'>前一天</button>
+  <picker class="pull-left" fields='day' mode="date" value="{{date}}" start="{{start}}" end="{{end}}" bindchange="bindDateChange">
+  <view class="picker">
+  <image src="../img/data.png"></image>
+  <text>{{datestart}}</text>
+  </view> 
+ </picker>
+ <button class="pull-left next" bindtap='next'>后一天</button>
+ <text class="find pull-left" bindtap='tofind'>精确查找</text>
+</view> 
+<view class="content" wx:if="{{code != 1}}">
+    <view class="main clearfix">
+        <view class="order pay clearfix">
+            <text data-num='1' class="red {{_type==1?'active':''}}" bindtap="menuClick">支付订单</text>
+            <text data-num='2' class="blue {{_type==2?'active':''}}" bindtap="menuClick">退款订单</text>
+        </view>
+    </view>
+    <view>
+        <view wx:for="{{orderList}}" wx:for-item="i" bindtap='move' data-id="{{i.refundNo}}" id="{{i.payOrderId}}" wx:key="i" class="list clearfix" data-status="{{i.orderStatus}}">
+            <view class="type" wx:if="{{i.payType == '和包'}}" >
+                <image src="../img/icon1.png"></image>
+            </view>
+            <view class="type" wx:elif="{{i.payType == '支付宝'}}" >
+                <image src="../img/icon3.png"></image>
+            </view>
+            <view class="type" wx:else="{{i.payType}}" >
+                <image src="../img/icon2.png"></image>
+            </view>
+            <view class="number" wx:if="{{i.orderStatus == '支付成功'}}">
+                <text class="phone">{{i.mobile}}</text>
+                <text>{{i.time}}</text>
+            </view>
+            <view class="number" wx:elif="{{i.orderStatus == '退款失败'}}" >
+                <text class="phone">{{i.mobile}}</text>
+                <text>{{i.time}}</text>
+            </view>
+            <view class="number" wx:else="{{i.orderStatus}}">
+                <text class="phone">{{i.mobile}}</text>
+                <text>{{i.time}}</text>
+            </view>
+            <view class="price" wx:if="{{i.orderStatus == '支付成功'}}">
+                <text class="status">+{{i.amount}}</text>
+                <text>{{i.orderStatus}}</text>
+            </view>
+            <view class="price" wx:else="{{i.orderStatus == '支付成功'}}">
+                <text class="status active">{{i.amount}}</text>
+                <text>{{i.orderStatus}}</text>
+            </view>
+        </view>
+        <view hidden="{{nomore}}" class='nomore'>
+          <text>无更多数据</text>
+        </view>
+        <view class='loading'>
+          <view class="weui-loadmore" hidden="{{isHideLoadMore}}">
+            <view class="weui-loading"></view>
+            <view class="weui-loadmore__tips">正在加载</view>
+          </view>
+        </view>
+        
+    </view>
+</view>
+<view wx:else="{{code !=1}}" class="content">
+  <text class="error">{{error}}</text>
+</view>
+<view class="footer {{position=='static'?'active':''}}" style='position:{{position}};'>
+    <view>
+        <image src="../img/icon4.png"></image>
+        <text class="active">查询账单</text>
+    </view>
+    <view catchtap='toChart' wx:if="{{admin == true}}">
+        <image src="../img/icon10.png"></image>
+        <text>运营分析</text>
+    </view>
+    <view catchtap='tomy'>
+        <image src="../img/icon5-p.png"></image>
+        <text>我的</text>
+    </view>
+</view>

@@ -1,0 +1,55 @@
+<!--pages/view/view.wxml-->
+<view>
+    <view class="user team">
+        <view class="price">{{list.amount}}</view>
+        <view class="status">{{list.orderStatus}}</view>
+        <view class="group clearfix">
+            <text class="name" >用户手机号</text>
+            <text class="value" selectable="true" >{{list.mobile}}</text>
+        </view>
+        <view class="group clearfix boss">
+            <text class="name">退款单号</text>
+            <text class="value" selectable="true" >{{list.refundVos[0].refundNo}}</text>
+        </view>
+        <view class="time">
+            <view class="group clearfix">
+                <text class="name">发起退款时间</text>
+                <text class="value">{{list.refundVos[0].createTime}}</text>
+            </view>
+            <view class="group clearfix 3" wx:if="{{list.orderstatus == '退款成功'}}">
+                <text class="name">退款完成时间</text>
+                <text class="value">{{list.refundVos[0].refundTime}}</text>
+            </view>
+            <view class="group clearfix boss">
+                <text class="name">退款方式</text>
+                <text class="value">{{list.payType}}</text>
+            </view>
+            <!--<view class="group clearfix ">
+                <text class="name">退款原因</text>
+                <text class="value">{{list.refundreason}}</text>
+            </view>-->
+        </view>
+    </view>
+    <view class="team content">
+        <view class="group clearfix">
+            <text class="name">商户订单号</text>
+            <text class="value">{{list.tradeNo}}</text>
+        </view>
+        <view class="group clearfix">
+            <text class="name">支付时间</text>
+            <text class="value">{{list.payTime}}</text>
+        </view>
+        <view class="group clearfix">
+            <text class="name">退款金额</text>
+            <text class="value">{{list.refundVos[0].refundAmount}} </text>
+        </view>
+        <view class="group clearfix">
+            <text class="name">支付方式</text>
+            <text class="value">{{list.payType}}</text>
+        </view>
+        <view class="group clearfix boss">
+            <text class="name">商品详情</text>
+            <text class="value">{{list.orderInfo}}</text>
+        </view>
+    </view>
+</view>

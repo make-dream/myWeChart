@@ -1,0 +1,96 @@
+<!--pages/charts/charts.wxml-->
+<view class="chart clearfix">
+    <view class='tablist clearfix'>
+      <text bindtap='tab' data-num="1" class="noborder {{tab==1?'active':''}}">支付订单</text>
+      <text bindtap='tab' data-num="2" class="{{tab==2?'active':''}}">支付金额</text>
+    </view>
+    <view class='orderlist clearfix'>
+      <view class='team border' wx:if="{{tab == 1}}">
+        <text class='name'>昨日支付订单 (笔)</text>
+        <text class='val clearfix'>{{dayNum}} <!--<text class="{{data1.data.dayChain>0?'red':'green'}}">{{data1.data.dayChain *100 |Int}}%</text>--></text>
+      </view>
+      <view class='team border' wx:else="{{tab == 1}}">
+        <text class='name'>昨日支付金额 (元)</text>
+        <text class='val clearfix'>{{dayTotal}} <!--<text class="{{data2.data.dayChain>0?'red':'green'}}">{{data2.data.dayChain *100 |Int}}%</text>--></text>
+      </view>
+      <view class='team' wx:if="{{tab == 1}}">
+        <text class='name'>当月支付订单 (笔)</text>
+        <text class='val clearfix'>{{orderNumSum}} <text class='green'></text></text> 
+      </view>
+      <view class='team' wx:else="{{tab == 1}}">
+        <text class='name'>当月支付金额 (元)</text>
+        <text class='val clearfix'>{{orderAmountSum}}</text> 
+      </view>
+    </view>
+    <view wx:if="{{tab == 1}}" class='con'>
+      <view class='tit'>{{name}}</view>
+      <view class='title'>支付订单分析</view>
+      <text class='type'>单位（笔）</text>
+      <canvas canvas-id="stock1" class="canvas" bindtouchstart="touchHandler" bindtouchmove="moveHandler" bindtouchend="touchEndHandler" ></canvas>
+    </view>
+    <view wx:else="{{tab == 1}}"  class='con'>
+      <view class='tit'>{{name}}</view>
+      <view class='title'>支付金额分析</view>
+      <text class='type'>单位（元）</text>
+      <canvas canvas-id="stock1" class="canvas" bindtouchstart="touchHandler" bindtouchmove="moveHandler" bindtouchend="touchEndHandler" ></canvas>
+    </view>
+    <view class="content" wx:if="{{tab == 1}}">
+      <text class='title' wx:if="{{list.length>0}}">{{title}}</text>
+      <text class='title' wx:if="{{list.length==0}}">{{dateChoose}}订单数为零</text>
+      <view class="group clearfix" wx:for="{{list}}" wx:for-item="i" wx:for-index="idx">
+        <view class='block'>
+          <!--<text class="no {{idx==0?'glod':''}}">{{idx+1}}</text>-->
+          <view class='main clearfix'>
+            <view class="no">{{idx+1}}</view>
+            <view class="name">
+              <text class='location'>{{i.name}}</text>
+              <view class='progress clearfix'>
+                <view class='pro'>
+                  <text class='active' style='width:{{i.numPerCent}};'></text>
+                </view>
+                <view class="num">{{i.orderNum}}</view>
+              </view>
+            </view>
+            <view class="num2">{{i.numPerCent}}</view>
+          </view>
+        </view>
+        
+      </view>
+    </view>
+    <view class="content" wx:else="{{tab == 1}}">
+        <text class='title' wx:if="{{list.length>0}}">{{title}}</text>
+        <text class='title' wx:if="{{list.length==0}}">{{dateChoose}}支付金额为零</text>
+        <view class="group clearfix" wx:for="{{list}}" wx:for-item="i" wx:for-index="idx">
+            <view class='block'>
+                <view class='main clearfix'>
+                    <view class="no">{{idx+1}}</view>
+                    <view class="name">
+                      <text class='location'>{{i.name}}</text>
+                      <view class='progress clearfix'>
+                        <view class='pro'>
+                          <text class='active' style='width:{{i.amountPercent}};'></text>
+                        </view>
+                        <view class="num">{{i.orderAmount}}</view>
+                      </view>
+                    </view>
+                    <view class="num2">{{i.amountPercent}}</view>
+                </view>
+            </view>
+
+        </view>
+    </view>
+</view>
+<view class="footer">
+    <view bindtap='tolist'>
+        <image src="../img/icon4-p.png"></image>
+        <text>查询账单</text>
+    </view>
+    <view bindtap='toChart'>
+        <image src="../img/icon10-p.png"></image>
+        <text class="active">运营分析</text>
+    </view>
+    <view bindtap='tomy'>
+        <image src="../img/icon5-p.png"></image>
+        <text>我的</text>
+    </view>
+</view>

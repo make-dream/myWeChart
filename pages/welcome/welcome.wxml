@@ -1,0 +1,5 @@
+<view class="container">
+  <view class="tip-container">
+    <text>{{welcomeTip}}</text>
+  </view>
+</view>

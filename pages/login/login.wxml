@@ -1,0 +1,32 @@
+<!--index.wxml-->
+<view class="section">
+  <image class='login' src='../img/logo.png'></image>
+  <view class='slogn'>杭研营业厅小助手</view>
+  <view class="group clear border bordertop">
+      <image src="../img/user.png"></image>
+      <input placeholder="请输入手机号码" class='phone' bindtap="listenerInput" bindinput="getPhone" maxlength="11"/>
+  </view>
+  <view class="group clear borderbottom">
+      <image src="../img/key.png"></image>
+      <input placeholder="请输入验证码" bindtap="listenerInput" bindinput="getValidate" class="idCard" maxlength="6"/>
+      <text bindtap='getcode' class="getcode {{status == false?'gray':''}}">{{message}}</text>
+  </view>
+  <button bindtap='toList' class="button">提交</button>
+  <text class="error" wx:if="{{errorMessage!= ''}}">{{errorMessage}}</text>
+
+  <view class="modal-mask" bindtap="hidemodal" catchtouchmove="preventTouchMove" wx:if="{{flag}}"></view>
+  <view class="modal-dialog" wx:if="{{flag}}">
+    <view class="modal-content">
+        <text>{{alertMessage}}</text>
+    </view>
+    <view class="modal-footer">
+        <view class="btn-confirm login" bindtap="confirm" data-status="confirm">确定</view>
+    </view>
+  </view>
+     <!-- <modal hidden="{{false}}" no-cancel confirm-text="" >
+          <view class="modal">
+              <text class="title">账号绑定成功</text>
+              <text class="submit" bindtap='confirm' >确定</text>
+          </view>
+      </modal>-->
+</view>

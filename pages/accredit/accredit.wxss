@@ -1,0 +1,10 @@
+/* pages/accredit/accredit.wxss */
+.logo{
+  width: 276rpx;
+  height: 276rpx;
+  display: block;
+  margin: 20rpx auto;
+}
+.btn_yzm{
+  margin-top: 100rpx
+}

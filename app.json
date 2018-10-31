@@ -1,0 +1,21 @@
+{
+  "pages":[
+    "pages/welcome/welcome",
+    "pages/list/list",
+    "pages/my/my",    
+    "pages/charts/charts",
+    "pages/login/login",         
+    "pages/logs/logs",
+    "pages/view/view",
+    "pages/find/find",
+    "pages/refund/refund",
+    "pages/accredit/accredit" 
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "杭研营业厅小助手",
+    "navigationBarTextStyle":"black",
+    "enablePullDownRefresh": true
+  } 
+}
